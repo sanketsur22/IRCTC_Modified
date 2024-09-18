@@ -1,0 +1,180 @@
+<html>
+
+<head>
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+  <link rel="stylesheet" as="style" onload="this.rel='stylesheet'"
+    href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Public+Sans%3Awght%40400%3B500%3B700%3B900" />
+
+  <title>IRCTC Ticket Booking</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+
+<body>
+  <div class="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden"
+    style='font-family: "Public Sans", "Noto Sans", sans-serif;'>
+    <div class="layout-container flex h-full grow flex-col">
+      <header
+        class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f0f2f4] px-10 py-3">
+        <div class="flex items-center gap-4 text-[#111418]">
+          <div class="size-4">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_6_535)">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z"
+                  fill="currentColor"></path>
+              </g>
+              <defs>
+                <clipPath id="clip0_6_535">
+                  <rect width="48" height="48" fill="white"></rect>
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+          <h2 class="text-[#111418] text-lg font-bold leading-tight tracking-[-0.015em]">IRCTC</h2>
+        </div>
+        <div class="flex flex-1 justify-end gap-8">
+          
+          <button
+          onclick="goToHome()"
+            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#f0f2f4] text-[#111418] text-sm font-bold leading-normal tracking-[0.015em]">
+            <span class="truncate">Return to Home</span>
+          </button>
+          <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+            style='background-image: url("https://cdn.usegalileo.ai/stability/db6b6501-b871-451d-bbd4-535f8dfb59f4.png");'>
+          </div>
+        </div>
+      </header>
+
+      <div class="px-40 flex flex-1 justify-center py-5">
+        <div class="layout-content-container flex flex-col w-[512px] max-w-[512px] py-5 max-w-[960px] flex-1">
+          <h1 class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 text-center pb-3 pt-5">
+            Ticket has been booked</h1>
+          <h2 class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Journey
+            Details</h2>
+          <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between">
+            <div class="flex items-center gap-4">
+              <div class="text-[#111418] flex items-center justify-center rounded-lg bg-[#f0f2f4] shrink-0 size-12"
+                data-icon="Train" data-size="24px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor"
+                  viewBox="0 0 256 256">
+                  <path
+                    d="M184,24H72A32,32,0,0,0,40,56V184a32,32,0,0,0,32,32h8L65.6,235.2a8,8,0,1,0,12.8,9.6L100,216h56l21.6,28.8a8,8,0,1,0,12.8-9.6L176,216h8a32,32,0,0,0,32-32V56A32,32,0,0,0,184,24ZM56,120V80h64v40Zm80-40h64v40H136ZM72,40H184a16,16,0,0,1,16,16v8H56V56A16,16,0,0,1,72,40ZM184,200H72a16,16,0,0,1-16-16V136H200v48A16,16,0,0,1,184,200ZM96,172a12,12,0,1,1-12-12A12,12,0,0,1,96,172Zm88,0a12,12,0,1,1-12-12A12,12,0,0,1,184,172Z">
+                  </path>
+                </svg>
+              </div>
+              <div class="flex flex-col justify-center">
+                <p class="text-[#111418] text-base font-medium leading-normal line-clamp-1" id="journeyDetails"></p>
+                <p class="text-[#637588] text-sm font-normal leading-normal line-clamp-2" id="trainName"></p>
+              </div>
+            </div>
+            <div class="shrink-0">
+              <button
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 bg-[#f0f2f4] text-[#111418] text-sm font-medium leading-normal w-fit">
+                <span class="truncate" id="pnrNumber"></span>
+              </button>
+            </div>
+          </div>
+
+          <h2 class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Passenger
+            Details</h2>
+          <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between">
+            <div class="flex items-center gap-4">
+              <div class="text-[#111418] flex items-center justify-center rounded-lg bg-[#f0f2f4] shrink-0 size-12"
+                data-icon="Person" data-size="24px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor"
+                  viewBox="0 0 256 256">
+                  <path
+                    d="M208,136H176V104h16a16,16,0,0,0,16-16V40a16,16,0,0,0-16-16H64A16,16,0,0,0,48,40V88a16,16,0,0,0,16,16H80v32H48a16,16,0,0,0-16,16v16a16,16,0,0,0,16,16h8v40a8,8,0,0,0,16,0V184H184v40a8,8,0,0,0,16,0V184h8a16,16,0,0,0,16-16V152A16,16,0,0,0,208,136ZM64,40H192V88H64Zm32,64h64v32H96Zm112,64H48V152H208v16Z">
+                  </path>
+                </svg>
+              </div>
+              <div class="flex flex-col justify-center">
+              <p class="text-[#111418] text-base font-medium leading-normal line-clamp-1" id="passengerName"></p>
+              <p class="text-[#637588] text-sm font-normal leading-normal line-clamp-2" id="passengerDetails"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between">
+          <div class="flex items-center gap-4">
+            <div class="text-[#111418] flex items-center justify-center rounded-lg bg-[#f0f2f4] shrink-0 size-12"
+              data-icon="Chair" data-size="24px" data-weight="regular">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor"
+                viewBox="0 0 256 256">
+                <path
+                  d="M184,64H72A32,32,0,0,0,40,96v88a32,32,0,0,0,32,32h8v40a8,8,0,0,0,16,0V216h64v40a8,8,0,0,0,16,0V216h8a32,32,0,0,0,32-32V96A32,32,0,0,0,184,64ZM56,104V88H200v16Zm8,48v40a16,16,0,0,1-16,16H184a16,16,0,0,1-16,16H72V192Zm16-16a12,12,0,1,1-12-12A12,12,0,0,1,72,136ZM184,136a12,12,0,1,1-12-12A12,12,0,0,1,184,136Z">
+                </path>
+              </svg>
+            </div>
+            <div class="flex flex-col justify-center">
+              <p class="text-[#111418] text-base font-medium leading-normal line-clamp-1" id="seatDetails"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <script>
+function generatePNR() {
+  let pnr = '';
+  for (let i = 0; i < 10; i++) {
+    pnr += Math.floor(Math.random() * 10);
+  }
+  return pnr;
+}
+function getRandomCoach(coaches) {
+  const randomIndex = Math.floor(Math.random() * coaches.length);
+  return coaches[randomIndex];
+}
+    // Retrieve train and passenger details from localStorage
+    document.addEventListener("DOMContentLoaded", function () {
+      const selectedTrain = JSON.parse(localStorage.getItem('selectedTrain'));
+      // Get train details from local storage
+      const trainDetails = `(${selectedTrain.train_number})`;
+      const trainName = `${selectedTrain.train_name}`;
+      const pnrNumber = generatePNR();
+      // document.getElementById("distance").textContent = `Distance: ${selectedTrain.distance} km`;
+
+      // Get passenger details from local storage
+      const passengerDetails = JSON.parse(localStorage.getItem('passengerDetails'));
+      const passengerName = passengerDetails.full_name;
+      const passengerAge = passengerDetails.age;
+
+      // Get seat details
+      const seatNumber = localStorage.getItem('selected_seat');
+
+      const coaches = ['Coach A', 'Coach B', 'Coach C', 'Coach D', 'Coach E'];
+      const coach = getRandomCoach(coaches);
+
+      // Display journey details
+      if (trainDetails && trainName && pnrNumber) {
+        document.getElementById("journeyDetails").innerText = trainDetails;
+        document.getElementById("trainName").innerText = trainName;
+        document.getElementById("pnrNumber").innerText = `PNR: ${pnrNumber}`;
+      }
+
+      // Display passenger details
+      
+      // if (passengerName && passengerAge) {
+        document.getElementById("passengerName").innerText = passengerName;
+        document.getElementById("passengerDetails").innerText = `Age: ${passengerAge}`;
+      //}
+
+      // Display seat details
+      if (seatNumber && coach) {
+        document.getElementById("seatDetails").innerText = `Seat: ${seatNumber}, Coach: ${coach}`;
+      }
+    });
+
+    function goToHome(){
+      window.location.href ='/';
+    }
+  </script>
+
+</body>
+
+</html>
